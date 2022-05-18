@@ -55,4 +55,33 @@ RSpec.describe "Manage posts function", type: :system do
 		end
 	end
 
+	describe "Create new post" do
+		let(:loginn_user) {user_a}
+		let(:post_name) {"test1234"}
+
+
+		before do
+			visit new_post_path
+			fill_in "Title", with: post_name  #post_name is "let"
+			click_button "Create Post"
+		end
+
+		context "Input title in form" do
+			it "If true" do
+				expect(page).to have_content("test1234")
+			end
+		end
+
+
+		context "Do not input title in form" do
+			let(:post_name) {""}
+
+			it "If error" do
+				within "#error_explanation" do
+					expect(page).to have_content "Title can't be blank"
+				end
+			end
+		end
+	end
+
 end
