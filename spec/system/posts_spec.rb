@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Manage posts function", type: :system do
 	let(:user_a) { FactoryBot.create(:user, email: "userA@gmail.com") }
     let(:user_b) { FactoryBot.create(:user, email: "userB@gmail.com") }
-    let!(:post_a){ FactoryBot.create(:post, title: "hehe1111", user: user_a)}
+    let!(:post_a){ FactoryBot.create(:post, title: "hello1234", user: user_a)}
     #postA = FactoryBot.create(:post, title: "hehe1111", user: user_a)
 
 	before do
@@ -11,11 +11,15 @@ RSpec.describe "Manage posts function", type: :system do
 		driven_by(:rack_test)
 
 		# user_a = FactoryBot.create(:user)
-		FactoryBot.create(:post, title:"hello1234", user: user_a)
+		#FactoryBot.create(:post, title:"hello1234", user: user_a)
 		visit root_path
 		fill_in "Email", with: loginn_user.email
 		fill_in "Password", with: loginn_user.password
 		click_button "Log in"
+	end
+
+	shared_examples_for "Show posts of user A" do
+		it {expect(page).to have_content("hello1234")}
 	end
 
 
@@ -23,9 +27,7 @@ RSpec.describe "Manage posts function", type: :system do
 		context 'When user A login ' do
 			let(:loginn_user) { user_a }
 
-			it 'Show posts of user A' do
-				expect(page).to have_content("hello1234")
-			end
+			it_behaves_like "Show posts of user A"
 		end
 
 		context "When user B login" do
@@ -48,9 +50,8 @@ RSpec.describe "Manage posts function", type: :system do
 				visit post_path(post_a)
 			end
 
-			it "Show posts of user A" do
-				expect(page).to have_content("hehe1111")
-			end
+			it_behaves_like "Show posts of user A"
+			
 		end
 	end
 
