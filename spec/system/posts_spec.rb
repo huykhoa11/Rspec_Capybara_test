@@ -30,14 +30,14 @@ RSpec.describe "Manage posts function", type: :system do
 			it_behaves_like "Show posts of user A"
 		end
 
-		context "When user B login" do
-			#click_button "Log out"
-			let(:loginn_user) { user_b }
+		# context "When user B login" do
+		# 	#click_button "Log out"
+		# 	let(:loginn_user) { user_b }
 
-			it "Do not show posts of user A" do
-				expect(page).to have_no_content("hello1234")
-			end
-		end
+		# 	it "Do not show posts of user A" do
+		# 		expect(page).to have_no_content("hello1234")
+		# 	end
+		# end
 	end 	# describe "Show posts list"
 
 

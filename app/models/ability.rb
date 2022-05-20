@@ -3,13 +3,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-      user ||= User.new # guest user (not logged in)
+  def initialize(userr)
+      userr ||= User.new # guest user (not logged in)
       
-      if user.admin?
+      if userr.admin?
         can :manage, :all
       else
-        can :read, Post, user_id: current_user.id #:read == [:show, :index]
+        can :edit, Post, user_id: userr.id
+        can :destroy, Post, user_id: userr.id
+        can :read, :all
+        #can :read, Post, user_id: current_user.id #:read == [:show, :index]
       end
 
 
