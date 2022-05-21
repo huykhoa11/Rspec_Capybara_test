@@ -8,10 +8,12 @@ class Ability
       
       if userr.admin?
         can :manage, :all
+        can :read, :all
       else
         can :edit, Post, user_id: userr.id
         can :destroy, Post, user_id: userr.id
         can :read, :all
+        #can :manage, :all
         #can :read, Post, user_id: current_user.id #:read == [:show, :index]
       end
 

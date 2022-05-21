@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   def index
     #@posts = Post.all
     @q = current_user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    if request.post?
+      @posts = @q.result(distinct: true).page(params[:page])
+    else
+      @posts = Post.all.page(params[:page])
+    end
   end
 
   # GET /posts/1 or /posts/1.json
