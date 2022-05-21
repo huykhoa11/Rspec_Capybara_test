@@ -1,5 +1,11 @@
 # README
 
+<strong> Used gem in app: </strong>
+* devise
+* cancancan
+* ransack
+* kaminari
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
