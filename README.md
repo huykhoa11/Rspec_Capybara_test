@@ -5,6 +5,8 @@
 * cancancan
 * ransack
 * kaminari
+* rspec
+* capybara
 
 
 # Preview
