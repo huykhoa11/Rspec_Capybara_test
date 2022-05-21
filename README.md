@@ -8,6 +8,7 @@
 * rspec
 * capybara
 
+admin email : admin@gmail.com<br>
 
 # Preview
 
