@@ -8,7 +8,7 @@
 * rspec
 * capybara
 
-admin email : admin@gmail.com<br>
+admin email : "admin@gmail.com"<br>
 
 # Preview
 
