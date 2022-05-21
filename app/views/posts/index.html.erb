@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1 style="color:yellowgreen;">Posts</h1>
 
 <% if user_signed_in? %>
 login as <%= current_user.email %><hr>
@@ -9,12 +9,14 @@ login as <%= current_user.email %><hr>
   <%= f.search_field :title_cont, placeholder: "Search post" %>
   <%= f.submit "Search" %>
 <% end %>
+<br>
+<%= link_to "clear search", root_path %>
 <br><br>
 
   <table>
     <thead>
       <tr>
-        <th>Title</th>
+        <th><%= sort_link(@q, :title) %></th>
         <th colspan="4"></th>
       </tr>
     </thead>
